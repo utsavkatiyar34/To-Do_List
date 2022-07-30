@@ -1,3 +1,29 @@
 {
-  "todo": []
+  "todo": [
+    {
+      "title": "Name",
+      "status": false,
+      "id": "4828253b-fd59-4563-a673-5886a6ac72e2"
+    }
+  ],
+  "users": [
+    {
+      "id": "6abe6c8a-3b89-408c-a0b2-d3d91afb77b5",
+      "name": "Utsav Katiyar",
+      "email": "utsavkatiyar34@gmail.com",
+      "username": "Utsavktr",
+      "mobile": "9653023447",
+      "description": "trader",
+      "password": "123@43"
+    },
+    {
+      "id": "d61c6ac9-1cf5-414d-b0ae-643139c1455a",
+      "name": "Priyam Katiyar",
+      "email": "priyamktr07@gmail.com",
+      "username": "priyamktr",
+      "mobile": "9653023446",
+      "description": "blogger",
+      "password": "priyam234"
+    }
+  ]
 }
