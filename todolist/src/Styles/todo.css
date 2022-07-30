@@ -2,10 +2,10 @@
         height: 2vw;
         width:25vw;
         margin-right: 1vw;
-        border: 1px solid brown;
+        border: 1px solid #900C3F;
         font-family:Arial, sans-serif;
-        font-size: 1.4vw;
+        font-size: .9vw;
 }
 .inpfield:focus{
-        outline: none;
+        outline: 1px solid #900C3F;
 }

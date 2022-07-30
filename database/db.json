@@ -1,29 +1,3 @@
 {
-  "todo": [
-    {
-      "title": "stationary",
-      "status": false,
-      "id": 2
-    },
-    {
-      "title": "food",
-      "status": false,
-      "id": 3
-    },
-    {
-      "title": "books buying",
-      "status": true,
-      "id": 4
-    },
-    {
-      "title": "Dinner",
-      "status": true,
-      "id": 5
-    },
-    {
-      "title": "dog",
-      "status": false,
-      "id": "97a70e55-5eec-4741-abd2-d0542cd054f5"
-    }
-  ]
+  "todo": []
 }

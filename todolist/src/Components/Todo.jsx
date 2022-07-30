@@ -5,11 +5,11 @@ import { useState } from 'react';
 import {v4} from 'uuid';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToDoError, addToDoLoading, addToDoSuccess, getToDoError, getToDoLoading, getToDoSuccess } from '../Store/actions';
+import { addToDoError, addToDoLoading, addToDoSuccess, deleteToDoError, deleteToDoLoading, deleteToDoSuccess, getToDoError, getToDoLoading, getToDoSuccess, patchToDoError, patchToDoLoading, patchToDoSuccess } from '../Store/actions';
 export const Todo = () => {
 const [text, setText]= useState("");
 const dispatch=useDispatch();
-const {data} =  useSelector(state=> state.todo);
+const {loading,data} =  useSelector(state=> state.todo);
 
 let reqGet=()=>{
   dispatch(getToDoLoading());
@@ -39,16 +39,52 @@ let handleTodo=()=>{
     }).then((res)=>{
     dispatch(addToDoSuccess(res.data));
     }).catch((err)=>{
-    dispatch(addToDoError);
-    })        
+    dispatch(addToDoError());
+    })
+    reqGet();         
+}
+const handleToggle = (id,status) => {
+  dispatch(patchToDoLoading());
+  axios({
+    method:"patch",
+    url:`http://localhost:4000/todo/${id}`,
+    data:{
+      status:!status,
+    }
+    }).then((res)=>{
+    dispatch(patchToDoSuccess(res.data));
+    }).catch((err)=>{
+    dispatch(patchToDoError());
+    })
+    reqGet(); 
+}
+const handleDelete = (id) => {
+  dispatch(deleteToDoLoading());
+  axios({
+    method:"delete",
+    url:`http://localhost:4000/todo/${id}`,
+    }).then((res)=>{
+    dispatch(deleteToDoSuccess(res.data));
+    }).catch((err)=>{
+    dispatch(deleteToDoError());
+    })
+    reqGet(); 
 }
   return (
     <>
+    <div style={{padding:'1.5vw',width:'50%',marginLeft:'25%'}}>
     <input value={text} onChange={(e)=>setText(e.target.value)} className='inpfield' type='text'></input>
-    <Button onClick={handleTodo} variant='solid' sx={{ color: 'white', backgroundColor: 'brown', borderColor: 'brown'  }}>Add To-Do</Button>
+    <Button onClick={handleTodo} variant='solid' sx={{ color: 'white', backgroundColor: '#900C3F', borderColor: '#900C3F', '&:hover': {backgroundColor: '#a0522d',},}}>Add To-Do</Button>
+    </div>
     {
        data.map((el)=>{
-        return <h3 key={el.id}>{el.title}</h3>
+        return <div style={{border:"4px solid #900C3F", marginBottom:'1vw',padding:'1vw',width:'50%',marginLeft:'25%'}}>
+        <div style={{color:"brown",fontSize:'2vw',textTransform:'uppercase',fontWeight:'600'}} key={el.id}>{el.title}</div>
+        <div>
+          <Button onClick={()=>handleToggle(el.id,el.status)} variant='solid' sx={{ color: 'white', backgroundColor: '#900C3F', borderColor: '#900C3F', width:'8vw',marginRight:'.5vw', '&:hover': {backgroundColor: '#a0522d',},  }}>{el.status ? "Done" : "Pending"}</Button>
+          <Button onClick={()=>handleDelete(el.id)} variant='solid' sx={{ color: 'white', backgroundColor: '#900C3F', borderColor: '#900C3F', width:'8vw', '&:hover': {backgroundColor: '#a0522d',}, }}>Delete</Button>
+        </div>
+        </div>
       })
     }
     </>
