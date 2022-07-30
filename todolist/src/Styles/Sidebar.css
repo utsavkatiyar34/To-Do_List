@@ -1,0 +1,14 @@
+.sidebar{
+        height: 80vh;
+        width: 20vw;
+        text-align: center;
+        border:3px solid rgb(109, 3, 3);
+        margin-left: 1vw;
+        position: fixed;
+        padding:.5vw;
+}
+.sidebar>h3{
+        color:rgb(109, 3, 3);
+        font-family: Arial, sans-serif;
+        font-size: 1.5vw;
+}

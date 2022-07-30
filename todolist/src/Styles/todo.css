@@ -1,0 +1,11 @@
+.inpfield{
+        height: 2vw;
+        width:25vw;
+        margin-right: 1vw;
+        border: 1px solid brown;
+        font-family:Arial, sans-serif;
+        font-size: 1.4vw;
+}
+.inpfield:focus{
+        outline: none;
+}
