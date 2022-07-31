@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import '../Styles/Signup.css'
 import { Button } from '@mui/material';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { loginToDoError, loginToDoLoading, loginToDoSuccess } from '../Store/actions';
+import { Navigate, NavLink } from 'react-router-dom';
 
 export const Login = () => {
   const [username,setUsername]=useState('');
@@ -25,6 +26,10 @@ export const Login = () => {
           .catch((err) => {
             dispatch(loginToDoError());
           });
+  }
+  const { logdata } = useSelector((state) => state.login); 
+  if(logdata.length==1){
+    return <Navigate to="/" /> 
   }
   return (
     <div className='signUp'>
@@ -57,6 +62,7 @@ export const Login = () => {
             marginRight:'auto',
             "&:hover": { backgroundColor: "#a0522d" },
           }}>Login</Button>
+          <NavLink to="/signup">Not Registered?<br></br> SignUp</NavLink>
      </div>
   )
 }

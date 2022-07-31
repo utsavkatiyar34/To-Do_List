@@ -3,6 +3,7 @@ import "../Styles/Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@mui/material/Button";
 import { logOut } from "../Store/actions";
+import { Navigate } from "react-router-dom";
 
 export const Sidebar = () => {
   const { logdata } = useSelector((state) => state.login);
@@ -10,6 +11,9 @@ export const Sidebar = () => {
   let handleLogout = () => {
      dispatch(logOut());
   };
+  if(logdata.length===0){
+    return <Navigate to="/login"/>
+  }
   return (
     <>
       <div className="sidebar">

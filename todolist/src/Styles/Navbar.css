@@ -6,8 +6,8 @@
         padding-left:1.5vw;
         padding-right:1.5vw;
         max-height: 15vw;
-        border-bottom: 2px solid rgb(5, 135, 187);
-        border-top: 2px solid rgb(5, 135, 187);
+        border-bottom: 3px solid rgb(109, 3, 3);
+        border-top: 3px solid rgb(109, 3, 3);
         position: sticky;
         top: 0;
         z-index: 100;
@@ -24,7 +24,7 @@
 }
 .logonav-nav{
         text-decoration: none;
-        color: purple;
+        color: rgb(109, 3, 3);;
         
 }
 .logonav:hover{
@@ -73,17 +73,17 @@
  padding-left: .2vw;
  padding-right: .2vw;
  text-align: center;
- color: rgb(134, 134, 134);
+ color: rgb(123, 42, 42);
  text-decoration: none;
  font-weight: 400;
 }
 .menulinks:hover{
         cursor: pointer;
-        color:purple;
+        color:rgb(109, 3, 3);;
         /* font-weight: bold; */
         transition: all .5s ease-in-out 0s;
 }
 .menulinks:active{
-        color:purple;
+        color:rgb(109, 3, 3);;
         font-weight: bold;
 }       

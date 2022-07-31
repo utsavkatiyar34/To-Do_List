@@ -24,6 +24,7 @@ const initialState = {
   login: {
     loading: false,
     error: false,
+    status:'',
     logdata: [],
   },
   signup: {
@@ -184,6 +185,7 @@ export const reducer = (state = initialState, action) => {
           ...state.login,
           loading: false,
           error: false,
+          status: action.payload.id,
           logdata: action.payload,
         },
       };
@@ -203,6 +205,7 @@ export const reducer = (state = initialState, action) => {
           ...state.login,
           loading:false,
           error:false,
+          status:'',
           logdata:[],
         },
       };

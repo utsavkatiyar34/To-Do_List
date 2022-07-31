@@ -3,8 +3,9 @@ import '../Styles/Signup.css'
 import { Button } from '@mui/material';
 import { v4 } from "uuid";
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signupToDoError, signupToDoLoading, signupToDoSuccess } from '../Store/actions';
+import { Navigate, NavLink } from 'react-router-dom';
 export const Signup = () => {
 const [name, setName]=useState('');
 const [email,setEmail]=useState('');
@@ -35,6 +36,10 @@ axios({
         dispatch(signupToDoError());
       });
 }
+const { logdata } = useSelector((state) => state.login); 
+  if(logdata.length==1){
+    return <Navigate to="/" /> 
+  }
 
   return (
     <div className='signUp'>
@@ -99,6 +104,7 @@ axios({
             marginRight:'auto',
             "&:hover": { backgroundColor: "#a0522d" },
           }}>Register</Button>
+          <NavLink to="/login">Already Registered?<br></br>Login</NavLink>
      </div>
     
   )

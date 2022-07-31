@@ -23,7 +23,7 @@ export const Todo = () => {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
   const { loading, data } = useSelector((state) => state.todo);
-
+  const {status} = useSelector((state) => state.login);
   let reqGet = () => {
     dispatch(getToDoLoading());
     axios({
@@ -40,7 +40,7 @@ export const Todo = () => {
   useEffect(() => {
     reqGet();
   }, []);
-
+ 
   let handleTodo = () => {
     dispatch(addToDoLoading());
     axios({
