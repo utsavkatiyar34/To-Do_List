@@ -25,7 +25,8 @@ const initialState = {
     loading: false,
     error: false,
     status:'',
-    logdata: [],
+    token: false,
+    user:[]
   },
   signup: {
     loading: false,
@@ -185,8 +186,9 @@ export const reducer = (state = initialState, action) => {
           ...state.login,
           loading: false,
           error: false,
-          status: action.payload.id,
-          logdata: action.payload,
+          status: action.payload.status,
+          token: true,
+          user:action.payload
         },
       };
     case LOGIN_TODO_ERROR:
@@ -206,7 +208,8 @@ export const reducer = (state = initialState, action) => {
           loading:false,
           error:false,
           status:'',
-          logdata:[],
+          token:false,
+          user:[]
         },
       };
 

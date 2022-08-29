@@ -13,22 +13,25 @@ export const Login = () => {
   let handleLogin=()=>{
     dispatch(loginToDoLoading());
     axios({
-          method: "get",
-          url: `http://localhost:4000/users?username=${username}&password=${password}`,
+          method: "post",
+          url: "http://localhost:7000/login",
+          data:{
+            email:username,
+            password:password
+          }
     }).then((res) => {
-      if (res.data.length===0){
+      if (res.data.user===0){
         alert("Invalid Creditionals");
         return;
       }
-            dispatch(loginToDoSuccess(res.data));
-            
+            dispatch(loginToDoSuccess(res.data.user));
           })
           .catch((err) => {
             dispatch(loginToDoError());
           });
   }
-  const { logdata } = useSelector((state) => state.login); 
-  if(logdata.length==1){
+  const { token } = useSelector((state) => state.login); 
+  if(token){
     return <Navigate to="/" /> 
   }
   return (
@@ -38,7 +41,7 @@ export const Login = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           className="inpfields"
-          placeholder='Username'
+          placeholder='Email'
           type="text"
         ></input>
         <input
